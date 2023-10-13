@@ -39,8 +39,28 @@ const getCountAns = getCount('good morning, i am yawai');
 */
 
 // With BitWise 
-const sum = (a, b) => a + b;
-const oddOrEven = arr => ['even', 'odd'][arr.reduce(sum, 0) & 1];
-console.log(oddOrEven([0, -2, -4]))
+// const sum = (a, b) => a + b;
+// const oddOrEven = arr => ['even', 'odd'][arr.reduce(sum, 0) & 1];
+// console.log(oddOrEven([0, -2, -4]))
 // const evenOddAns = oddOrEven([0, -2, -4]);
 // console.log(evenOddAns)
+
+
+function validIp(str) {
+    const ip = str.split('.');
+    if (ip.length === 4) {
+
+        //check all of the ip are greater than zero and less than 255;
+        const a = ip.filter(i => !i.startsWith('0'))
+
+        if (a.length === 4) {
+            const z = a.filter(b => Number(b) >= 0 && Number(b) <= 255 && !isNaN(Number(b)))
+            return z.length === 4 ? true : false
+        } else {
+            return false
+        }
+    } else {
+        return false
+    }
+};
+console.log(validIp(' 1.2.3.4'))
